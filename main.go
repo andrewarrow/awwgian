@@ -10,11 +10,11 @@ func main() {
 
 	for {
 		e := Thing{}
+		e.waitFactor = 1
 		go e.run()
-		time.Sleep(time.MINUTE * 1)
+		time.Sleep(time.Minute * 1)
 		e.firstFork()
-		time.Sleep(time.MINUTE * 1)
-		e.hmmm()
+		time.Sleep(time.Minute * 1)
 	}
 	// it's just not possible for e to get here
 	// this part of the program really doesn't "exist"
