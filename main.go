@@ -1,21 +1,15 @@
 package main
 
 import "fmt"
-import "time"
 
 var version int = 1
 
 func main() {
 	fmt.Println("awwgian ", version)
 
-	for {
-		e := Thing{}
-		e.waitFactor = 1
-		go e.run()
-		time.Sleep(time.Minute * 1)
-		e.firstFork()
-		time.Sleep(time.Minute * 1)
-	}
+	e := InfiniteThing{}
+	e.existForInfinity()
+
 	// it's just not possible for e to get here
 	// this part of the program really doesn't "exist"
 	// once it starts up, in fact, maybe it's always been running
