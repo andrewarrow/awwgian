@@ -1,8 +1,10 @@
+```
 A W W G I a N
 n e o i t   a
 d   n v     m
     ' e     e
     t
+```
 
 1. Program to demonstrate a bored OMNISCIENT thread that's all alone
 in an infite loop
