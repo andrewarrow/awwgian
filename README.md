@@ -41,4 +41,6 @@ And e has a choice. Be bored and alone and just watch everyone as the
 OMNISCIENT one, or pick another rando thread and do 70 years or some finite time
 in a normal thread loop, again.
 
-
+(becase when you know that death is no biggie, i just go back to begin e, then you 
+aren't truly scared to die. And being scared to die is what makes everything fun. 
+This is why OMNISCIENT e keeps going back into mortal threads.)
