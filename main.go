@@ -1,10 +1,13 @@
 package main
 
 import "fmt"
+import "time"
+import "math/rand"
 
 var version int = 1
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	fmt.Println("awwgian ", version)
 
 	e := InfiniteThing{}
