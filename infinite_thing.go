@@ -53,7 +53,22 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 		if i > x {
 			break
 		}
-		fmt.Println(t.space)
+		t.printSpace()
 		time.Sleep(time.Second * 1)
 	}
+}
+
+func (t *InfiniteThing) printSpace() {
+	for i, ii := range t.space {
+		fmt.Printf("|%d|", i)
+		for _, jj := range ii {
+			for _, kk := range jj {
+				fmt.Printf("%d,", kk)
+			}
+			fmt.Printf("\n")
+		}
+		fmt.Printf("\n")
+	}
+	fmt.Printf("\n")
+	fmt.Printf("\n")
 }
