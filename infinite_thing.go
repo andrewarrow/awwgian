@@ -40,12 +40,16 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			a := []int8{0}
 			b := [][]int8{a}
 			for i, ii := range t.space {
-				t.space = append(t.space, b)
-				for j, jj := range ii {
-					t.space[i] = append(t.space[i], a)
-					for _, _ = range jj {
-						t.space[i][j] = append(t.space[i][j], 0)
+				//t.space = append(t.space, b)
+				for j, _ := range ii {
+					//t.space[i] = append(t.space[i], []int8{0})
+					t.space[i][j] = append(t.space[i][j], 0)
+					if j == 0 {
+						t.space[i] = append(t.space[i], []int8{0})
 					}
+				}
+				if i == 0 {
+					t.space = append(t.space, b)
 				}
 			}
 		}
