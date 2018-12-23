@@ -65,8 +65,7 @@ func (t *InfiniteThing) Expand() {
 			b := [][]int8{a}
 			t.space = [][][]int8{b}
 		} else {
-			listOfList := BlankListOfList(len(t.space))
-			t.space = append(t.space, append(listOfList, BlankList(len(t.space))))
+			t.space = append(t.space, BlankListOfList(len(t.space)))
 			for i, ii := range t.space {
 				t.space[i] = append(t.space[i], BlankList(len(t.space)))
 				for j, _ := range ii {
