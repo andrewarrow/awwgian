@@ -32,7 +32,7 @@ func (t *InfiniteThing) existForInfinity() {
 func BlankList(size int) []int8 {
 	list := []int8{}
 	for i := 0; i < size; i++ {
-		list = append(list, 0)
+		list = append(list, ri8())
 	}
 	return list
 }
@@ -43,11 +43,16 @@ func BlankListOfList(size int, template []int8) [][]int8 {
 	}
 	return list
 }
+
+func ri8() int8 {
+	a := rand.Intn(74) + 48
+	return int8(a)
+}
 func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 	i := 0
 	for {
 		if len(t.space) == 0 {
-			a := []int8{0}
+			a := []int8{ri8()}
 			b := [][]int8{a}
 			t.space = [][][]int8{b}
 		} else {
@@ -55,10 +60,9 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			listOfList := BlankListOfList(len(t.space), blankList)
 			t.space = append(t.space, append(listOfList, blankList))
 			for i, ii := range t.space {
-
-				t.space[i] = append(t.space[i], append(blankList, 0))
+				t.space[i] = append(t.space[i], append(blankList, ri8()))
 				for j, _ := range ii {
-					t.space[i][j] = append(t.space[i][j], 0)
+					t.space[i][j] = append(t.space[i][j], ri8())
 				}
 			}
 		}
