@@ -46,6 +46,9 @@ func BlankListOfList(size int) [][]int8 {
 
 func ri8() int8 {
 	a := rand.Intn(74) + 48
+	if a == 96 {
+		return int8(ri8())
+	}
 	return int8(a)
 }
 func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
@@ -59,7 +62,7 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			listOfList := BlankListOfList(len(t.space))
 			t.space = append(t.space, append(listOfList, BlankList(len(t.space))))
 			for i, ii := range t.space {
-				t.space[i] = append(t.space[i], append(BlankList(len(t.space)), ri8()))
+				t.space[i] = append(t.space[i], BlankList(len(t.space)))
 				for j, _ := range ii {
 					t.space[i][j] = append(t.space[i][j], ri8())
 				}
@@ -78,7 +81,7 @@ func (t *InfiniteThing) printSpace() {
 	for _, ii := range t.space {
 		for _, jj := range ii {
 			for _, kk := range jj {
-				fmt.Printf("%d,", kk)
+				fmt.Printf("%s,", string(kk))
 			}
 			fmt.Printf("\n")
 		}
