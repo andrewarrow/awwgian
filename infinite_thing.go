@@ -29,6 +29,20 @@ func (t *InfiniteThing) existForInfinity() {
 	}
 }
 
+func BlankList(size int) []int8 {
+	list := []int8{}
+	for i := 0; i < size; i++ {
+		list = append(list, 0)
+	}
+	return list
+}
+func BlankListOfList(size int, template []int8) [][]int8 {
+	list := [][]int8{}
+	for i := 0; i < size; i++ {
+		list = append(list, template)
+	}
+	return list
+}
 func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 	i := 0
 	for {
@@ -37,18 +51,12 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			b := [][]int8{a}
 			t.space = [][][]int8{b}
 		} else {
-			bar := []int8{}
-			for foo := 0; foo < len(t.space); foo++ {
-				bar = append(bar, 0)
-			}
-			b := [][]int8{}
-			for foo2 := 0; foo2 < len(t.space); foo2++ {
-				b = append(b, bar)
-			}
-			t.space = append(t.space, append(b, bar))
+			blankList := BlankList(len(t.space))
+			listOfList := BlankListOfList(len(t.space), blankList)
+			t.space = append(t.space, append(listOfList, blankList))
 			for i, ii := range t.space {
 
-				t.space[i] = append(t.space[i], append(bar, 0))
+				t.space[i] = append(t.space[i], append(blankList, 0))
 				for j, _ := range ii {
 					t.space[i][j] = append(t.space[i][j], 0)
 				}
