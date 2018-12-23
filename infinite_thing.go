@@ -44,11 +44,10 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			b := [][]int8{bar}
 			t.space = append(t.space, b)
 			for i, ii := range t.space {
+
+				t.space[i] = append(t.space[i], append(bar, 0))
 				for j, _ := range ii {
 					t.space[i][j] = append(t.space[i][j], 0)
-				}
-				if i == 0 {
-					//t.space = append(t.space, b)
 				}
 			}
 		}
