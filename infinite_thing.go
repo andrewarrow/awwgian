@@ -36,10 +36,10 @@ func BlankList(size int) []int8 {
 	}
 	return list
 }
-func BlankListOfList(size int, template []int8) [][]int8 {
+func BlankListOfList(size int) [][]int8 {
 	list := [][]int8{}
 	for i := 0; i < size; i++ {
-		list = append(list, template)
+		list = append(list, BlankList(size))
 	}
 	return list
 }
@@ -49,25 +49,24 @@ func ri8() int8 {
 	return int8(a)
 }
 func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
-	i := 0
+	o := 0
 	for {
 		if len(t.space) == 0 {
 			a := []int8{ri8()}
 			b := [][]int8{a}
 			t.space = [][][]int8{b}
 		} else {
-			blankList := BlankList(len(t.space))
-			listOfList := BlankListOfList(len(t.space), blankList)
-			t.space = append(t.space, append(listOfList, blankList))
+			listOfList := BlankListOfList(len(t.space))
+			t.space = append(t.space, append(listOfList, BlankList(len(t.space))))
 			for i, ii := range t.space {
-				t.space[i] = append(t.space[i], append(blankList, ri8()))
+				t.space[i] = append(t.space[i], append(BlankList(len(t.space)), ri8()))
 				for j, _ := range ii {
 					t.space[i][j] = append(t.space[i][j], ri8())
 				}
 			}
 		}
-		i++
-		if i > x {
+		o++
+		if o > x {
 			break
 		}
 		t.printSpace()
