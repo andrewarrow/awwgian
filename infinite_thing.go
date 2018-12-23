@@ -74,7 +74,8 @@ func (t *InfiniteThing) Expand() {
 				}
 			}
 		}
-		fmt.Println(time.Now(), len(t.space))
+		//fmt.Println(time.Now(), len(t.space))
+		t.printSpace()
 		time.Sleep(time.Second * 1)
 	}
 }
