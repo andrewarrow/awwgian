@@ -9,10 +9,17 @@ type InfiniteThing struct {
 }
 
 func (t *InfiniteThing) existForInfinity() {
+	go t.Expand()
 	for {
 		fmt.Printf("i am e\n")
 
-		x := rand.Intn(9223372036854775807) // sometimes you really can't just add 1 more
+		if len(t.space) > 0 {
+			i := rand.Intn(len(t.space))
+			k := rand.Intn(len(t.space))
+			j := rand.Intn(len(t.space))
+			fmt.Println(i, j, k, string(t.space[i][j][k]))
+		}
+		//x := rand.Intn(9223372036854775807) // sometimes you really can't just add 1 more
 		// and yet exploring 9223372036854775807 will
 		// take "forever" and therefore is infinity
 		// even though 9223372036854775808 is boom, crash.
@@ -24,8 +31,8 @@ func (t *InfiniteThing) existForInfinity() {
 		// This is what should rock moderm math, re-do all your assumptions about
 		// when x goes to infinity and just admit, there is a number like 9223372036854775807
 		// in the real world that is max int.
-		go t.Explore(t.space, x)
-		time.Sleep(time.Second * 100)
+		//go t.Explore(t.space, x)
+		time.Sleep(time.Second * 1)
 	}
 }
 
@@ -51,8 +58,7 @@ func ri8() int8 {
 	}
 	return int8(a)
 }
-func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
-	o := 0
+func (t *InfiniteThing) Expand() {
 	for {
 		if len(t.space) == 0 {
 			a := []int8{ri8()}
@@ -68,11 +74,7 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 				}
 			}
 		}
-		o++
-		if o > x {
-			break
-		}
-		fmt.Println(len(t.space))
+		fmt.Println(time.Now(), len(t.space))
 		time.Sleep(time.Second * 1)
 	}
 }
