@@ -45,7 +45,7 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			for foo2 := 0; foo2 < len(t.space); foo2++ {
 				b = append(b, bar)
 			}
-			t.space = append(t.space, b)
+			t.space = append(t.space, append(b, bar))
 			for i, ii := range t.space {
 
 				t.space[i] = append(t.space[i], append(bar, 0))
@@ -64,8 +64,7 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 }
 
 func (t *InfiniteThing) printSpace() {
-	for i, ii := range t.space {
-		fmt.Printf("|%d|", i)
+	for _, ii := range t.space {
 		for _, jj := range ii {
 			for _, kk := range jj {
 				fmt.Printf("%d,", kk)
