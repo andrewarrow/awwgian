@@ -72,7 +72,7 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 		if o > x {
 			break
 		}
-		t.printSpace()
+		fmt.Println(len(t.space))
 		time.Sleep(time.Second * 1)
 	}
 }
