@@ -37,19 +37,18 @@ func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
 			b := [][]int8{a}
 			t.space = [][][]int8{b}
 		} else {
-			a := []int8{0}
-			b := [][]int8{a}
+			bar := []int8{}
+			for foo := 0; foo < len(t.space); foo++ {
+				bar = append(bar, 0)
+			}
+			b := [][]int8{bar}
+			t.space = append(t.space, b)
 			for i, ii := range t.space {
-				//t.space = append(t.space, b)
 				for j, _ := range ii {
-					//t.space[i] = append(t.space[i], []int8{0})
 					t.space[i][j] = append(t.space[i][j], 0)
-					if j == 0 {
-						t.space[i] = append(t.space[i], []int8{0})
-					}
 				}
 				if i == 0 {
-					t.space = append(t.space, b)
+					//t.space = append(t.space, b)
 				}
 			}
 		}
