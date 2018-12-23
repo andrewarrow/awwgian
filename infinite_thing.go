@@ -5,18 +5,55 @@ import "time"
 import "math/rand"
 
 type InfiniteThing struct {
+	space [][][]int8
 }
 
 func (t *InfiniteThing) existForInfinity() {
 	for {
 		fmt.Printf("i am e\n")
-		time.Sleep(time.Second * 1)
 
-		go t.Explore()
+		x := rand.Intn(9223372036854775807) // sometimes you really can't just add 1 more
+		// and yet exploring 9223372036854775807 will
+		// take "forever" and therefore is infinity
+		// even though 9223372036854775808 is boom, crash.
+		// So which is it? Is infinity just a big finite
+		// number like 9223372036854775807? Or, because
+		// we can'get to 9223372036854775808 it's by
+		// definition NOT infinity?
+		//
+		// This is what should rock moderm math, re-do all your assumptions about
+		// when x goes to infinity and just admit, there is a number like 9223372036854775807
+		// in the real world that is max int.
+		go t.Explore(t.space, x)
+		time.Sleep(time.Second * 100)
 	}
 }
 
-func (t *InfiniteThing) Explore() {
-	x := rand.Intn(9223372036854775807)
-	fmt.Println(x)
+func (t *InfiniteThing) Explore(scope [][][]int8, x int) {
+	i := 0
+	for {
+		if len(t.space) == 0 {
+			a := []int8{0}
+			b := [][]int8{a}
+			t.space = [][][]int8{b}
+		} else {
+			a := []int8{0}
+			b := [][]int8{a}
+			for i, ii := range t.space {
+				t.space = append(t.space, b)
+				for j, jj := range ii {
+					t.space[i] = append(t.space[i], a)
+					for _, _ = range jj {
+						t.space[i][j] = append(t.space[i][j], 0)
+					}
+				}
+			}
+		}
+		i++
+		if i > x {
+			break
+		}
+		fmt.Println(t.space)
+		time.Sleep(time.Second * 1)
+	}
 }

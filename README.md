@@ -6,6 +6,25 @@ d   n v     m
     t
 ```
 
+[1,0,1,2,3]
+[3,5,1,3,5]
+[1,3,4,3,1]
+[2,4,1,1,4]
+
+
+b := []int{1,1,2,3,4}
+c := []int{3,4,1,1,2}
+a := [][]int{b,c}
+
+
+b2 := []int{1,1,2,3,4}
+c2 := []int{3,4,1,1,2}
+a2 := [][]int{b2,c2}
+
+cube := [][][]int{a,a2}
+
+
+
 1. Program to demonstrate a bored OMNISCIENT thread that's all alone
 in an infite loop
 
@@ -44,3 +63,25 @@ in a normal thread loop, again.
 (becase when you know that death is no biggie, i just go back to begin e, then you 
 aren't truly scared to die. And being scared to die is what makes everything fun. 
 This is why OMNISCIENT e keeps going back into mortal threads.)
+
+```
+ [[[0]]]
+ [[[0,0],[0]],[[0]]]
+
+ [
+  [
+   [0,0,0,0],[0,0],[0],[0]
+  ],
+  [
+    [0,0],    [0]
+  ],
+  [
+    [0]
+  ],    
+  [
+    [0]
+  ]
+ ]
+
+
+```
